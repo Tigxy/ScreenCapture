@@ -1,0 +1,36 @@
+﻿<Window x:Class="ScreenCapture.TakeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenCapture"
+        mc:Ignorable="d"
+        Title="ScreenShotTake_Window" Height="450" Width="800"
+        Visibility="Visible"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        >
+    <Window.Resources>
+        <SolidColorBrush x:Key="NotSelectedColor" Color="DarkGray" Opacity="0.4"/>
+    </Window.Resources>
+    <Grid PreviewKeyDown="ScreenShotDisplay_KeyDown">
+        <Canvas x:Name="DrawingBoard">
+            <Image Name="ScreenShotDisplay"/>
+
+            <Rectangle x:Name="Rect_Left" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
+            <Rectangle x:Name="Rect_Right" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
+            <Rectangle x:Name="Rect_Top" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
+            <Rectangle x:Name="Rect_Bottom" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
+            
+            <Rectangle x:Name="HorizontalSelectionLine" Fill="Black" Height="1" HorizontalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=DrawingBoard}"/>
+            <Rectangle x:Name="VerticalSelectionLine" Fill="Black" Width="1" HorizontalAlignment="Stretch" Height="{Binding ActualHeight, ElementName=DrawingBoard}"/>
+
+        </Canvas>
+        
+        <
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" IsHitTestVisible="False"
+                Background="LightGray" Padding="10" FontWeight="SemiBold" x:Name="ActionPrompt">
+                    Select area of screen of which a screenshot should be taken
+        </TextBlock>
+    </Grid>
+</Window>

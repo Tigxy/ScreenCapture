@@ -1,0 +1,114 @@
+﻿<Window x:Class="ScreenCapture.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenCapture"
+        mc:Ignorable="d"
+        Title="Settings_Window" Height="700" Width="600"
+        Initialized="Window_Initialized"
+        Closing="Window_Closing"
+        ResizeMode="NoResize"
+        SizeToContent="Height">
+    <StackPanel Margin="5">
+        <GroupBox Header="Application" Padding="10">
+            <StackPanel>
+                <CheckBox IsChecked="{Binding IsAutostartEnabled}" Margin="0 3 0 3">
+                    Start with Windows
+                </CheckBox>
+
+                <CheckBox IsChecked="{Binding IsPrintKeyOverridden}" Margin="0 3 0 3">
+                    Override 'Print' key to take screenshots
+                </CheckBox>
+
+                <Grid Margin="0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Image storage location "
+                             ToolTip="The path where all taken images are stored"/>
+                    <TextBox Grid.Column="1" Text="{Binding ImagePath, UpdateSourceTrigger=PropertyChanged}" 
+                             HorizontalAlignment="Stretch"
+                             ToolTip="Leave empty to restore default"/>
+                </Grid>
+
+                <Grid Margin="0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Number of screenshots that should be displayed in the viewer "/>
+                    <TextBox Grid.Column="1" Text="{Binding MaximumScreenshotsInMemory, UpdateSourceTrigger=PropertyChanged}" 
+                             HorizontalAlignment="Stretch"
+                             ToolTip="Smaller number reduces memory usage, -1 to display all images"/>
+                </Grid>
+
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="When taking a screenshot" Padding="10" Margin="0 10 0 0">
+            <StackPanel>
+                <CheckBox IsChecked="{Binding IsAutomaticPasteToClipboardEnabled}" Margin="0 3">
+                    Automatically copy screenshot to clipboard
+                </CheckBox>
+                
+                <CheckBox IsChecked="{Binding IsCopiedNotificationHidden}" Margin="0 3">
+                    Hide 'Copied to clipboard' notification
+                </CheckBox>
+
+                <CheckBox IsChecked="{Binding IsScreenshotViewShownOnNewScreenshot}" Margin="0 3">
+                    Show screenshot viewer when new screenshot is taken
+                </CheckBox>
+
+                <CheckBox IsChecked="{Binding IsSelectionLinesShowed}" Margin="0 3">
+                    Show horizontal and vertical lines on mouse pointer
+                </CheckBox>
+
+                <CheckBox IsChecked="{Binding IsZoomBubbleShown}" Margin="0 3">
+                    [Not implemented yet] Show zoom bubble 
+                </CheckBox>
+
+                <Grid Margin="0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Minimum size of a successful screenshot "
+                               ToolTip="The minimum height and width a screenshot must have in order to be successful"/>
+                    <TextBox Grid.Column="1" Text="{Binding MinimumScreenshotSpanXY, UpdateSourceTrigger=PropertyChanged}" 
+                             HorizontalAlignment="Stretch"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Header="Control panel" Padding="10" Margin="0 10 0 0">
+            <StackPanel>
+                <CheckBox IsChecked="{Binding IsControlShownOnDesktop}" Margin="0 3 0 3">
+                    Show control panel on desktop
+                </CheckBox>
+                <CheckBox IsChecked="{Binding IsControlShownOnLeftSide}" Margin="0 3 0 3">
+                    Show control on the left side of the screen
+                </CheckBox>
+
+                <Grid Margin="0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Screen number to display on "
+                               ToolTip="Number of the screen to display the control panel on"/>
+                    <TextBox Grid.Column="1" Text="{Binding ScreenNumber, UpdateSourceTrigger=PropertyChanged}" 
+                             HorizontalAlignment="Stretch" 
+                             ToolTip="defaults to primary screen if specified screen couldn't be found"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <Button Content="Close" Padding="5" Width="80" Margin="0 10 0 0"
+                Click="Button_Click"/>
+    </StackPanel>
+</Window>
