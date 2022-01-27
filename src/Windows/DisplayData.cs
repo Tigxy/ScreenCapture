@@ -60,7 +60,7 @@ namespace ScreenCapture.Windows
         {
             var targetPath = Path.Combine(
                 Configuration.Settings.ImagePath,
-                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}_{DateTime.Now.ToLongTimeString().Replace(":", "")}.png");
+                DateTime.Now.ToString("yyyy-MM-dd_THH-mm-ss") + ".png");
 
             try
             {
