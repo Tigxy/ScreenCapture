@@ -63,7 +63,7 @@
                 <Image.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Copy path" Click="CopyPath_Click"/>
-                        <MenuItem Header="Open in explorer..." Click="CopyPath_Click"/>
+                        <MenuItem Header="Open in explorer..." Click="OpenImage_Click"/>
                     </ContextMenu>
                 </Image.ContextMenu>
             </Image>

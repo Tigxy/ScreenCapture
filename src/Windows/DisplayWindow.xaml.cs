@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using ScreenCapture.Utils;
 
 namespace ScreenCapture
 {
@@ -192,6 +193,11 @@ namespace ScreenCapture
         private void CopyPath_Click(object sender, RoutedEventArgs e)
         {
             CopyToClipboard(_currentImagePath, copyPath: true);
+        }
+
+        private void OpenImage_Click(object sender, RoutedEventArgs e)
+        {
+            ExplorerUtils.ShowInExplorer(_currentImagePath);
         }
     }
 }

@@ -92,6 +92,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Utils\ExplorerUtils.cs" />
     <Compile Include="Utils\HotKeyMngr.cs" />
     <Compile Include="ControlPanel.WindowStyles.cs" />
     <Compile Include="Instances.cs" />
