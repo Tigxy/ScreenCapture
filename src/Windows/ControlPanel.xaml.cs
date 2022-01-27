@@ -19,10 +19,7 @@ namespace ScreenCapture
                     lock (new object())
                     {
                         if (_lazyControl == null)
-                        {
                             _lazyControl = new ControlPanel();
-                            _lazyControl.Show();
-                        }
                     }
                 return _lazyControl;
             }
@@ -33,7 +30,7 @@ namespace ScreenCapture
             System.Diagnostics.Debug.WriteLine("New Display");
             InitializeComponent();
             this.DataContext = Configuration.Settings;
-            this.Show();
+            this.Hide();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
