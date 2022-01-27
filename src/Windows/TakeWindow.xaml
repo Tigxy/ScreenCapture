@@ -27,7 +27,6 @@
 
         </Canvas>
         
-        <
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" IsHitTestVisible="False"
                 Background="LightGray" Padding="10" FontWeight="SemiBold" x:Name="ActionPrompt">
                     Select area of screen of which a screenshot should be taken
