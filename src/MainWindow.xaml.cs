@@ -44,8 +44,17 @@ namespace ScreenCapture
         private void InitHotKeyManager()
         {
             _mngr = new HotKeyMngr(Control);
-            if (Configuration.Settings.IsPrintKeyOverridden) { EnablePrintHotKey(); } else DisablePrintHotKey();
-            Configuration.Settings.PrintHotKeyStatusChanged += (status) => { if (status) { EnablePrintHotKey(); } else DisablePrintHotKey(); };
+            if (Configuration.Settings.IsPrintKeyOverridden) 
+                EnablePrintHotKey(); 
+            else 
+                DisablePrintHotKey();
+
+            Configuration.Settings.PrintHotKeyStatusChanged += (status) => {
+                if (status)
+                    EnablePrintHotKey();
+                else
+                    DisablePrintHotKey();
+            };
         }
 
         private void EnablePrintHotKey()
@@ -75,7 +84,11 @@ namespace ScreenCapture
         private void Window_Initialized(object sender, EventArgs e)
         {
             InitNotify();
-            Control.Visibility = UIUtils.BoolToVisibility(Configuration.Settings.IsControlShownOnDesktop);
+            Control.Show();
+            if (!Configuration.Settings.IsControlShownOnDesktop) {
+                Control.Hide();
+                Control.Visibility = Visibility.Hidden;
+            };
         }
 
         private void InitNotify()

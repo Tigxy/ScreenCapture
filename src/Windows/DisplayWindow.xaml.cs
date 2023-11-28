@@ -200,7 +200,14 @@ namespace ScreenCapture
 
         private void OpenImage_Click(object sender, RoutedEventArgs e)
         {
-            ExplorerUtils.OpenInDefault(_currentImagePath);
+            bool result = ExplorerUtils.OpenInDefault(_currentImagePath);
+            if (!result) {
+                Instances.Notification.ShowBalloonTip(
+                    1000,
+                    Configuration.AppName,
+                    $"Failed to open image '{_currentImagePath}'",
+                    System.Windows.Forms.ToolTipIcon.Info);
+            }
         }
 
         private void OpenInExplorer_Click(object sender, RoutedEventArgs e) {

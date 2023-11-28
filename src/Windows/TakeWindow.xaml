@@ -12,8 +12,9 @@
         >
     <Window.Resources>
         <SolidColorBrush x:Key="NotSelectedColor" Color="DarkGray" Opacity="0.4"/>
+        <SolidColorBrush x:Key="PromptBackgroundColor" Color="LightGray" Opacity="1"/>
     </Window.Resources>
-    <Grid PreviewKeyDown="ScreenShotDisplay_KeyDown">
+    <Grid x:Name="LayoutGrid" PreviewKeyDown="ScreenShotDisplay_KeyDown">
         <Canvas x:Name="DrawingBoard">
             <Image Name="ScreenShotDisplay"/>
 
@@ -21,15 +22,17 @@
             <Rectangle x:Name="Rect_Right" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
             <Rectangle x:Name="Rect_Top" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
             <Rectangle x:Name="Rect_Bottom" Fill="{StaticResource NotSelectedColor}" IsEnabled="False" IsHitTestVisible="False"/>
-            
-            <Rectangle x:Name="HorizontalSelectionLine" Fill="Black" Height="1" HorizontalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=DrawingBoard}"/>
-            <Rectangle x:Name="VerticalSelectionLine" Fill="Black" Width="1" HorizontalAlignment="Stretch" Height="{Binding ActualHeight, ElementName=DrawingBoard}"/>
 
+            <Rectangle x:Name="HorizontalSelectionLine" Fill="Black" Height="1" HorizontalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=DrawingBoard}"
+                    Canvas.Top="100"/>
+            <Rectangle x:Name="VerticalSelectionLine" Fill="Black" Width="1" HorizontalAlignment="Stretch" Height="{Binding ActualHeight, ElementName=DrawingBoard}"
+                    Canvas.Left="100"/>
+
+            <TextBlock IsEnabled="False" IsHitTestVisible="False" Background="{StaticResource PromptBackgroundColor}" 
+                Padding="15" FontWeight="SemiBold" x:Name="ActionPrompt">
+                Select area for screenshot
+            </TextBlock>
         </Canvas>
-        
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" IsHitTestVisible="False"
-                Background="LightGray" Padding="10" FontWeight="SemiBold" x:Name="ActionPrompt">
-                    Select area of screen of which a screenshot should be taken
-        </TextBlock>
+
     </Grid>
 </Window>
