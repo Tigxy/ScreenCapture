@@ -106,7 +106,9 @@ namespace ScreenCapture
 
         private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            SelectAndDisplay(-1);
+            if (e.OriginalSource is ListView lv) {
+                SelectAndDisplay(lv.SelectedIndex);
+            }
         }
         
         private void New_Click(object sender, RoutedEventArgs e)
@@ -114,6 +116,7 @@ namespace ScreenCapture
             this.Hide();
             System.Threading.Thread.Sleep(400);
             TakeWindow.TakeScreenshot(true);
+
         }
 
         private void Copy_Click(object sender, RoutedEventArgs e)
@@ -197,6 +200,10 @@ namespace ScreenCapture
 
         private void OpenImage_Click(object sender, RoutedEventArgs e)
         {
+            ExplorerUtils.OpenInDefault(_currentImagePath);
+        }
+
+        private void OpenInExplorer_Click(object sender, RoutedEventArgs e) {
             ExplorerUtils.ShowInExplorer(_currentImagePath);
         }
     }

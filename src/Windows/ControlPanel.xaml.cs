@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScreenCapture.Utils;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
@@ -44,7 +45,7 @@ namespace ScreenCapture
             Configuration.Settings.PropertyChanged += (s, args) =>
             {
                 if (args.PropertyName == nameof(Configuration.Settings.IsControlShownOnDesktop))
-                    this.Visibility = Configuration.Settings.IsControlShownOnDesktop ? Visibility.Visible : Visibility.Hidden;
+                    this.Visibility = UIUtils.BoolToVisibility(Configuration.Settings.IsControlShownOnDesktop);
             };
         }
 

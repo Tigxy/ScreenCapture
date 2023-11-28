@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScreenCapture.Utils;
+using System;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -74,7 +75,7 @@ namespace ScreenCapture
         private void Window_Initialized(object sender, EventArgs e)
         {
             InitNotify();
-            Control.Visibility = BoolToVisibility(Configuration.Settings.IsControlShownOnDesktop);
+            Control.Visibility = UIUtils.BoolToVisibility(Configuration.Settings.IsControlShownOnDesktop);
         }
 
         private void InitNotify()
@@ -133,11 +134,6 @@ namespace ScreenCapture
         private void NotifyIcon_Click(object sender, EventArgs e)
         {
             Display.Visibility = Visibility.Visible;
-        }
-
-        private Visibility BoolToVisibility(bool value, bool invert = false)
-        {
-            return value ^ invert ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void CloseAllWindows()

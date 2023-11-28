@@ -12,5 +12,11 @@ namespace ScreenCapture.Utils
                 Arguments = $"/select,\"{path}\"" 
             });
         }
+
+        public static void OpenInDefault(string path) {
+            Process.Start(new ProcessStartInfo() {
+                FileName = path
+            });
+        }
     }
 }
